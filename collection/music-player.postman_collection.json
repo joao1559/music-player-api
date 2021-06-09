@@ -1,0 +1,122 @@
+{
+	"info": {
+		"_postman_id": "6f8ee2a6-37e7-4e47-bfbe-09b4cbae4dbd",
+		"name": "music-player",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Cadastro usuario",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6ImpvYW8iLCJpYXQiOjE2MjI5MTcyMzF9.89eruc6IkrV7NQX9tL6_TZG9b2ApC4XPbHKqqpoDSlY",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"login\": \"teste2\",\r\n    \"pass\": \"teste\",\r\n    \"name\": \"teste\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://music-player-api1.herokuapp.com/user",
+					"protocol": "https",
+					"host": [
+						"music-player-api1",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ping",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://music-player-api1.herokuapp.com/api",
+					"protocol": "https",
+					"host": [
+						"music-player-api1",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"login\": \"joao\",\r\n    \"pass\": \"joao\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://music-player-api1.herokuapp.com/login",
+					"protocol": "https",
+					"host": [
+						"music-player-api1",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Refresh token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6ImpvYW8iLCJpYXQiOjE2MjMyMDcyOTUsImV4cCI6MTYyMzIyNTI5NX0.Ug_6dLF35lBKW4eZSWVW85tfpZ6_nx-fENWhDUzwo-g\",\r\n    \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6ImpvYW8iLCJpYXQiOjE2MjMyMDcyOTUsImV4cCI6MTYyMzI0MzI5NX0.gFfnSqXw0LSERPvNqMPoMNbgcmMD9OpTWtEHTbQG8gg\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://music-player-api1.herokuapp.com/refresh-token",
+					"protocol": "https",
+					"host": [
+						"music-player-api1",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"refresh-token"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
