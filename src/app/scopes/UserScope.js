@@ -52,6 +52,29 @@ class EmployeeScope {
             throw error
         }
     }
+
+    refreshToken(params) {
+        const contract = new validate.ValidationContract(params);
+
+        try {
+
+            contract.start('accessToken')
+                .isString()
+                .isNotNull()
+                .isRequired()
+
+                .start('refreshToken')
+                .isString()
+                .isNotNull()
+                .isRequired()
+
+                .end()
+
+        } catch (error) {
+            error.httpCode = 400;
+            throw error
+        }
+    }
 }
 
 module.exports = new EmployeeScope();

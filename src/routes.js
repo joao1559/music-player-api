@@ -7,6 +7,7 @@ const UserController = require('./app/controllers/UserController');
 
 routes.post('/login', UserController.login);
 routes.post('/user', UserController.post);
+routes.post('/refresh-token', UserController.refreshToken);
 
 
 routes.get('/api', (req, res) => {
