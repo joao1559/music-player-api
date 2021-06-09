@@ -10,7 +10,8 @@ routes.post('/user', UserController.post);
 
 
 routes.get('/api', (req, res) => {
-    res.status(200).json({data: Date.now()})
+    let data = new Date();
+    res.status(200).json({ data: data.toLocaleDateString(`pt-BR`) })
 });
 
 module.exports = routes;
