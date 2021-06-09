@@ -9,7 +9,7 @@ routes.post('/login', UserController.login);
 routes.post('/user', UserController.post);
 
 
-routes.post('/api', (req, res) => {
+routes.get('/api', (req, res) => {
     res.status(200).json({data: Date.now()})
 });
 
