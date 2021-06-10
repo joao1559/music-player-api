@@ -1,9 +1,9 @@
-const repository = require('../repositories/UserRepository');
-const service = require('../services/UserService');
-const scope = require('../scopes/UserScope');
+const repository = require('./repository');
+const service = require('./service');
+const scope = require('./scope');
 
 class UserController {
-    // Funções chamadas pela rota
+    // Login
     async login(req, res) {
         try {
             const params = {
@@ -30,6 +30,7 @@ class UserController {
         }
     }
 
+    // Register
     async post(req, res) {
         try {
             const params = {
@@ -40,12 +41,11 @@ class UserController {
 
             scope.post(params)
             await repository.post(params)
+            const tokens = service.login(params);
 
             return res
                 .status(200)
-                .json({
-                    result: 'success'
-                })
+                .json(tokens)
 
         } catch (error) {
             return res
@@ -56,6 +56,7 @@ class UserController {
         }
     }
 
+    // Refresh token
     async refreshToken(req, res) {
         try {
             const params = {
@@ -69,6 +70,26 @@ class UserController {
             return res
                 .status(200)
                 .json(tokens)
+
+        } catch (error) {
+            return res
+                .status(error.httpCode || 500)
+                .json({
+                    error
+                })
+        }
+    }
+
+    async getById(req, res) {
+        try {
+            const { id } = req.params
+
+            const user = await repository.getById(id)
+            if (!user) throw { httpCode: 404, message: 'User not found' }
+
+            return res
+                .status(200)
+                .json(user)
 
         } catch (error) {
             return res

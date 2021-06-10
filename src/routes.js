@@ -2,12 +2,13 @@
 
 const routes = require('express').Router();
 
-const UserController = require('./app/controllers/UserController');
-// const Autenticacao = require('./app/helpers/autenticacao')
+const UserController = require('./app/user/controller');
+const Autenticacao = require('./helpers/autenticacao')
 
 routes.post('/login', UserController.login);
 routes.post('/user', UserController.post);
 routes.post('/refresh-token', UserController.refreshToken);
+routes.get('/user/:id', Autenticacao.validateToken, UserController.getById);
 
 
 routes.get('/api', (req, res) => {

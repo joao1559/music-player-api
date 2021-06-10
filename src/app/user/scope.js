@@ -1,4 +1,4 @@
-const validate = require('../helpers/validacao');
+const validate = require('../../helpers/validacao');
 
 class EmployeeScope {
     // Funções de validação de parametros
