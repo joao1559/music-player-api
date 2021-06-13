@@ -4,8 +4,7 @@ const uri = `mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PAS
 
 async function initMongo() {
     const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-    await client.connect();
-    return client.db(process.env.MONGODB_DATABASE).collection(process.env.MONGODB_COLLECTION);
+    return client.connect();
 }
 
 module.exports = { initMongo }

@@ -1,6 +1,6 @@
 const validate = require('../../helpers/validacao');
 
-class EmployeeScope {
+class UserScope {
     // Funções de validação de parametros
     login(params) {
         const contract = new validate.ValidationContract(params);
@@ -77,4 +77,4 @@ class EmployeeScope {
     }
 }
 
-module.exports = new EmployeeScope();
+module.exports = new UserScope();

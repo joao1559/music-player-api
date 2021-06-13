@@ -59,3 +59,5 @@ package-lock.json
 .next
 
 .idea/
+.vscode/
+musics/
