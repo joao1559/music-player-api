@@ -5,7 +5,12 @@ class MusicRepository {
     // Funções de acesso ao banco
     async get(params) {
         const collection = (await db.initMongo()).db(process.env.MONGODB_DATABASE).collection('music');
-        return collection.find({ $text: { $search: params.search } }, {projection: {name: 1}}).toArray()
+        return collection.find({ $text: { $search: params.search } }).toArray()
+    }
+
+    async getMusicFile(params) {
+        const collection = (await db.initMongo()).db(process.env.MONGODB_DATABASE).collection('music');
+        return collection.find({ $text: { $search: params.search } }, { projection: { name: 1 } }).toArray()
     }
 }
 

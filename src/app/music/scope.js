@@ -16,6 +16,23 @@ class MusicScope {
             throw error
         }
     }
+
+    getMusicFile(params) {
+        const contract = new validate.ValidationContract(params);
+
+        try {
+            contract.start('id')
+                .isString()
+                .isRequired()
+                .isNotNull()
+
+                .end()
+
+        } catch (error) {
+            error.httpCode = 400;
+            throw error
+        }
+    }
 }
 
 module.exports = new MusicScope();

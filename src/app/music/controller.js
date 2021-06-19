@@ -28,7 +28,29 @@ class MusicController {
         }
     }
 
-    
+    async getMusicFile(req, res) {
+        try {
+            const params = {
+                id: req.params.id || null
+            };
+
+            scope.getMusicFile(params)
+
+            const musics = await repository.getMusicFile(params)
+
+            return res
+                .status(200)
+                .json({musics: musics})
+
+        } catch (error) {
+            console.log(error)
+            return res
+                .status(error.httpCode || 500)
+                .json({
+                    error
+                })
+        }
+    }
 }
 
 module.exports = new MusicController()
