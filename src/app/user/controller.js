@@ -60,7 +60,6 @@ class UserController {
     async refreshToken(req, res) {
         try {
             const params = {
-                accessToken: req.body.accessToken || null,
                 refreshToken: req.body.refreshToken || null
             };
 

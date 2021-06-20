@@ -1,5 +1,4 @@
 const jwt = require('jsonwebtoken')
-
 require('dotenv').config({ path: '.env' });
 
 class UserService {
@@ -11,16 +10,18 @@ class UserService {
     }
 
     login(user) {
+        console.log(user)
         return {
-            accessToken: jwt.sign({ login: user.login }, process.env.SECRET, { expiresIn: '5h' }),
-            refreshToken: jwt.sign({ login: user.login }, process.env.SECRET, { expiresIn: '10h' })
+            accessToken: jwt.sign({ _id: user._id, login: user.login }, process.env.SECRET, { expiresIn: '5h' }),
+            refreshToken: jwt.sign({ _id: user._id, login: user.login }, process.env.SECRET, { expiresIn: '10h' })
         };
     }
 
     refreshToken(params) {
         try {
             const result = jwt.verify(params.refreshToken, process.env.SECRET)
-            return this.login(result.login)
+            console.log(result)
+            return this.login(result)
         } catch (e) {
             e.httpCode = 401
             return e

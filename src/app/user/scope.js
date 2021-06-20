@@ -57,19 +57,12 @@ class UserScope {
         const contract = new validate.ValidationContract(params);
 
         try {
-
-            contract.start('accessToken')
-                .isString()
-                .isNotNull()
-                .isRequired()
-
-                .start('refreshToken')
+            contract.start('refreshToken')
                 .isString()
                 .isNotNull()
                 .isRequired()
 
                 .end()
-
         } catch (error) {
             error.httpCode = 400;
             throw error

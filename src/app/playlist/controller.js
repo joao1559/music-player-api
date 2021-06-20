@@ -1,21 +1,13 @@
 const repository = require('./repository');
-const scope = require('./scope');
 
-class MusicController {
-    // Login
-    async get(req, res) {
+class PlaylistController {
+    async getTop(req, res) {
         try {
-            const params = {
-                search: req.query.search || null
-            };
-
-            scope.get(params)
-
-            const musics = await repository.get(params)
+            const playlists = await repository.getTop()
 
             return res
                 .status(200)
-                .json({musics: musics})
+                .json({playlists})
 
         } catch (error) {
             console.log(error)
@@ -27,9 +19,9 @@ class MusicController {
         }
     }
 
-    async getRecommended(req, res) {
+    async getByUser(req, res) {
         try {
-            const playlists = await repository.getRecommended()
+            const playlists = await repository.getByUser(req.user)
 
             return res
                 .status(200)
@@ -46,4 +38,4 @@ class MusicController {
     }
 }
 
-module.exports = new MusicController()
+module.exports = new PlaylistController()
