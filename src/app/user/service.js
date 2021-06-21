@@ -10,7 +10,6 @@ class UserService {
     }
 
     login(user) {
-        console.log(user)
         return {
             accessToken: jwt.sign({ _id: user._id, login: user.login }, process.env.SECRET, { expiresIn: '5h' }),
             refreshToken: jwt.sign({ _id: user._id, login: user.login }, process.env.SECRET, { expiresIn: '10h' })
@@ -20,7 +19,6 @@ class UserService {
     refreshToken(params) {
         try {
             const result = jwt.verify(params.refreshToken, process.env.SECRET)
-            console.log(result)
             return this.login(result)
         } catch (e) {
             e.httpCode = 401

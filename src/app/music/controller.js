@@ -6,8 +6,8 @@ class MusicController {
     async get(req, res) {
         try {
             const params = {
-                search: req.query.search || null
-            };
+                search: req.query.search || ''
+            }
 
             scope.get(params)
 
@@ -29,11 +29,11 @@ class MusicController {
 
     async getRecommended(req, res) {
         try {
-            const playlists = await repository.getRecommended()
+            const musics = await repository.getRecommended()
 
             return res
                 .status(200)
-                .json({playlists})
+                .json({musics})
 
         } catch (error) {
             console.log(error)
