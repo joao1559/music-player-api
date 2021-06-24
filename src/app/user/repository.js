@@ -22,7 +22,9 @@ class UserRepository {
     async getById(id) {
         const client = await db.initMongo()
         const collection = client.db(process.env.MONGODB_DATABASE).collection('user')
-        return collection.findOne({'_id': ObjectId(id)})
+        const user = await collection.findOne({'_id': ObjectId(id)})
+        await client.close()
+        return user
     }
 }
 

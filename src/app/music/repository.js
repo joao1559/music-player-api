@@ -15,7 +15,7 @@ class MusicRepository {
     async getRecommended() {
         const client = await db.initMongo()
         const collection = client.db(process.env.MONGODB_DATABASE).collection('music')
-        const musics = await collection.find().limit(5).toArray()
+        const musics = await collection.find().toArray()
         await client.close()
         return musics
     }
